@@ -1,0 +1,57 @@
+#include <iostream>    
+using namespace std;
+
+//declaring struct and listing struct members
+struct Bowler
+{
+	string Name;
+	int Game1;
+	int Game2;
+	int FinalScore;
+};
+
+//to input Bowlers info into array
+void getInput(Bowler &b) 
+{
+    cout << "\n Enter name: ";
+    cin >> b.Name;
+    cout << " Enter score for Game 1: ";
+    cin >> b.Game1;
+    cout << " Enter score for Game 2: ";
+    cin >> b.Game2;
+
+    // FinalScore is the higher of the two games
+    if(b.Game1 > b.Game2)
+	   	b.FinalScore = b.Game1; //game1 score is higher
+	else
+	   	b.FinalScore = b.Game2; //game2 score is higher 
+}
+
+int main()
+{
+    Bowler b1, b2, b3;
+
+    cout << "\n DATA FOR BOWLER 1"<<endl;
+    cout << " =================="<<endl;
+    getInput(b1);
+
+    cout << "\n DATA FOR BOWLER 2"<<endl;
+    cout << " =================="<<endl;
+    getInput(b2);
+
+    cout << "\n DATA FOR BOWLER 3"<<endl;
+    cout << " =================="<<endl;
+    getInput(b3);
+
+    // Determine the winner
+    Bowler winner = b1;
+    if (b2.FinalScore > winner.FinalScore) 
+        winner = b2;
+    
+    if (b3.FinalScore > winner.FinalScore) 
+        winner = b3;
+    
+    cout << "\n Winner is " << winner.Name << " with final score: " << winner.FinalScore << endl;
+
+    return 0;
+}
